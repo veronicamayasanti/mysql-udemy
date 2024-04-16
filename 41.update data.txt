@@ -1,0 +1,18 @@
+update data
+untuk mengubah data di tabel, kita bisa menggunakan perintah SQL update
+saat menggunakan SQL UPDATE, kita bisa memberitahu data mana yang akan di update
+dengan WHERE clause
+hati - hati ketika meng-update data di tabel, jika sampau WHERE clause nya salah
+bisa bisa kita malah meng-update seluruh data di tabel
+untuk update kita harus beritahu, kolom mana yang akan di update
+
+contoh
+menambah kolom kategori
+ALTER TABLE products
+ADD COLUMN category ENUM ('Makanan', 'Minuman', 'lain-lain')
+AFTER name;
+
+mengubah satu kolom
+UPDATE products
+SET category = 'Makanan'
+WHERE id = 'P0001'

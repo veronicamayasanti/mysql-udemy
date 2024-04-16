@@ -15,3 +15,18 @@ memasukan data ke tabel
 
 INSERT INTO products(id, name, description, price, quantity)
 VALUES ('P002', 'Mie Ayam Tahu', 'Mie Ayam Original dan Bakso Tahu', 20000, 100);
+
+memasukan beberapa data ke tabel
+INSERT INTO products(id, name, price, quantity)
+VALUES ('P006', 'Ayam Goreng', 13000, 100),
+	('P007', 'Ayam Bakar', 15000, 40),
+	('P008', 'Ayam Kremes', 16000, 80),
+	('P009', 'Ayam Geprak', 14000, 70),
+	('P010', 'Ayam Penyet', 11000, 90),
+	('P011', 'Ayam Bakar Tulang Lunak', 18000, 50),
+	('P012', 'Ayam Goreng Tulang Lunak', 19000, 30),
+	('P013', 'Soto Ayam', 9000, 78),
+	('P014', 'Soto Daging', 13000, 55),
+	('P015', 'Soto Betawi', 16000, 67),
+	('P016', 'Sop Ayam', 8000, 86),
+	('P017', 'Sop Iga', 16000, 69);

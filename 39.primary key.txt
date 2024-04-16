@@ -1,0 +1,31 @@
+Primary Key
+
+saat kita membuat tabel, idealnya tiap tabel memiliki primary Key
+primary key adalah sebuah kolom yang kita tunjuk sebagai id dari tabel tersebut
+primary key adalah identitas untuk tiap baris data di dalam tabel
+primary key harus unik tidak boleh ada data dengan primary key yang sama
+kita bisa menunjuk kolom yang akan kita jadikan primary key
+
+Primary Key di Multiple Column
+kita bisa membuat primary key kombinasi beberapa kolom
+namun disarankan untuk tetap menggunakan satu kolom ketika membuat primary key
+kecuali ada kasus seperti membuat tabel yang berelasi MANY TO MANY
+
+
+Menambah Primary Key ketika membuat tabel
+CREATE TABLE products
+(
+	id VARCHAR(10) NOT NULL,
+	name VARCHAR(100) NOT NULL,
+	description TEXT,
+	price INT UNSIGNED NOT NULL,
+	quantity INT UNSIGNED NOT NULL DEFAULT 0,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE = InnoDB
+
+masalahnya sekarang tabel sudah kita bikin
+jadi kita bisa menambah primary key di tabel
+
+ALTER TABLE products
+    ADD PRIMARY KEY (id);

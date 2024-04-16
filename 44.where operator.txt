@@ -1,0 +1,44 @@
+where operator
+sebelumnya di materi where clause kita sudah menggunakan operator = (sama dengan)
+sebenarnya sangat banyak sekali operator yang bisa kita gunakan ketika menggunakan where clause
+
+operator perbandingan
+operator                keterangan
+=                       sama dengan
+<> atau !=              tidak sama dengan
+<                       kurang dari
+<=                      kurang dari atau sama dengan
+>                       lebih dari
+>=                      lebih dari atau sama dengan
+
+contoh
+SELECT * FROM products WHERE stock > 90;
+
+
+AND dan OR operator
+kadang kita ingin mencari data dengan beberapa gabungan kondisi, kita bisa menggunakan operator AND dan OR
+AND dan OR digunakan untuk menggabungkan beberapa dua operator
+
+Hasil Operator AND
+Hasil Operator 1   Operator    Hasil Operator 2        Hasil Akhir
+Benar              AND         Benar                   Benar
+Salah               AND        Benar                   Salah
+Benar               AND         Salah                   Salah
+Salah               AND         Salah                   Salah
+
+
+mencari data dengan operator AND
+SELECT * FROM products WHERE quantity >= 100 AND price > 10000;
+
+
+Hasil Operator OR
+Hasil Operator 1    Operator    Hasil Operator 2    Hasil Akhir
+Benar               OR          Benar               Benar
+Salah               OR          Benar               Benar
+Benar               OR          Salah               Benar
+Salah               OR          Salah               Salah
+
+mencari data dengan operator OR
+SELECT * FROM products WHERE quantity > 500 OR price > 16000;
+
+menit 9.27

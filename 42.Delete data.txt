@@ -1,0 +1,13 @@
+Delete data
+setelah kita tahu cara menambah, mengubah dan mengambil data di tabel,
+terakhir yang perlu kita ketahui adalah menghapus data di tabel
+untuk menghapus data di tabel kita bisa menggunakan perintah SQL Delete
+perintah SQL DELETE sama seperti UPDATE, kita perlu memberi tahu data mana yang 
+akan di hapus dengan WHERE clause
+dan hati-hati jangan sampai salah menentukan WHERE caluse, karena jika salah bisa-bisa kita akan
+menghapus seluruh data di tabel
+
+Menghapus data
+DELETE
+FROM products
+WHERE id = 'p009';
