@@ -1,0 +1,9 @@
+select distinct data
+saat melakukan query dengan SELECT kadang kita mendapatkan data yang duplikat
+misal kita ingin melihat semua kategori di tabel products, maka otomatis hasil query SELECT akan duplikat,
+karena banyak sekalu produk dengan kategori yang sama
+jika kita ingin menghilangkan data data duplikat tersebut, kita bisa menggunakan SELECT dengan tambahan
+DISTINCT sebelum nama kolomnya
+
+menghilangkan data duplikat
+SELECT distinct category FROM products;

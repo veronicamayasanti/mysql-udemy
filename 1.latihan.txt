@@ -1,0 +1,38 @@
+Latihan hackerrank
+Tabel CITY digambarkan sebagai berikut:
+
+CITY
+Field           Type
+id              number
+Name            VARCHAR(17)
+countrycode     VARCHAR(3)
+district        VARCHAR(20);
+population      number;
+
+
+1. query semua kolom untuk semua kota di Amerika pada tabel CITY dengan populasi lebih dari 100.000.
+Kode Negara untuk Amerika adalah AS.
+
+
+
+jawabannya: 
+SELECT * FROM CITY
+WHERE countrycode = 'usa' 
+AND POPULATION > 100000;
+
+
+2.query kolom NAME untuk semua kota di Amerika dalam tabel CITY dengan populasi lebih dari 120.000. 
+Kode Negara untuk Amerika adalah USA.
+tabel seperti di atas
+
+jawabannya:
+SELECT NAME FROM CITY
+WHERE countrycode = 'USA'
+AND POPULATION > 120000;
+
+
+3. query semua kolom (atribut) untuk setiap baris dalam tabel CITY.
+
+jawabannya:
+SELECT * FROM CITY
+

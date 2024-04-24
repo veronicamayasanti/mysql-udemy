@@ -41,4 +41,57 @@ Salah               OR          Salah               Salah
 mencari data dengan operator OR
 SELECT * FROM products WHERE quantity > 500 OR price > 16000;
 
-menit 9.27
+menggabungkan AND dan OR
+prioritas dengan kurung ()
+SELECT * FROM products WHERE (category = 'makanan' OR quantity >50) AND price > 10000
+
+
+LIKE Operator
+LIKE operator adalah operator yang bisa kita gunakan untuk mencari sebagian data dalam string
+ini cocok sekali ketika kita hanya ingin mencari sebagian kata dalam string
+namun perlu diingat, operasi LIKE itu sangat lambat, oleh karena itu tidak disarankan jika datanya sudah terlalu besar di tabel
+Operator LIKE tidak case sensitive, jadi huruf besar dan huruf kecil tidak akan berpengaruh.
+
+Hasil Operator LIKE
+LIKE Operator           Hasil
+LIKE 'b%'               string dengan awalan b
+LIKE '%a'               string dengan akhiran a 
+LIKE '%maya%'           string berisi eko
+NOT LIKE                Tidak LIKE
+
+
+mencari menggunakan LIKE Operator
+SELECT * FROM products WHERE name LIKE '%mie%'
+
+NULL Operator
+untuk mencari data yang berisi NULL, kita tidak bisa menggunakan operator perbandingan = NULL
+ada operator khusus untuk mencari data NULL, yaitu menggunakan NULL operator
+IS NULL artinya mencari yang NULL
+IS NOT NULL artinya mencari yang tidak NULL
+
+mencari menggabungkan NULL Operator
+SELECT * FROM products WHERE description IS NULL;
+
+BETWEEN Operator
+kadang kita ingin mencari data yang >= dan <= secara sekaligus
+misal kita ingin mencari products yang harganya antara 10000 sampai 20000
+untuk melakukan itu, kita bisa menggunakan WHERE price >= 10000 AND price <= 20000
+namun ada operator BETWEEN yang bisa kita gunakan agar lebih sederhana
+untuk kebalikannya kita bisa gunakan NOT BETWEEN
+
+
+mencari menggunakan BETWEEN operator
+mencari products yang price nya antara 10000 dan 20000
+SELECT * FROM products WHERE price BETWEEN 10000 AND 20000
+
+
+IN Operator
+Operator IN adalah operator untuk melakukan pencarian sebuah kolom dengan beberapa nilai
+tidak IN maka NOT IN
+misal kita ingin mencari products dengan category makanan atau minuman, maka kita bisa menggunakan operator IN
+
+mencari menggunakan IN Operator
+SELECT * FROM products WHERE category IN ('Makanan', 'Minuman');
+
+
+

@@ -1,0 +1,5 @@
+Date dan Time function
+MySQL juga menyediakan banyak sekali function yang bisa kita gunakan untuk mengelolah data tipe Date dan Time
+
+menambah kolom timestamp
+SELECT id, created_at, YEAR(created_at), MONTH(created_at) FROM products;

@@ -1,0 +1,8 @@
+string function
+
+sama seperti number di MySQL juga banyak meyediakan function untuk tipe data string
+ada banyak sekalu function yang bisa kita gunakan.
+
+contoh
+menggunakan string function
+SELECT id, LOWER(name) as 'Name Lower' FROM products;

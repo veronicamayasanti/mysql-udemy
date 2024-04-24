@@ -1,0 +1,19 @@
+flow control function
+
+mysql memiliki firut flow control function
+ini mirip IF ELSE di bahasa pemrograman
+
+menggunakan control flow case
+SELECT id,
+        CASE category
+            WHEN 'makanan' THEN 'enak'
+            WHEN 'Minuman' THEN 'segar'
+            ELSE 'apa itu?'
+            END AS 'category'
+FROM products; 
+
+
+menggunakan control flow IF
+SELECT id,
+        price,
+        IF(pri)
