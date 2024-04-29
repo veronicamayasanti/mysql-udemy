@@ -1,0 +1,29 @@
+GROUP BY
+
+kadang saat melakukan aggregate, kita ingin datanya di grouing berdasarkan kriteria tertentu
+misal kita ingin mrlihat rata -rata harga product, tapi ingin per category
+atau kita ingin melihat total semua product taoi per category
+hal ini bisa dilakukan di MySQL dengan menggunakan GROUP BY clause
+GROUP BY clause hanya bisa digunakan jika menggunakan aggregate function
+
+contoh
+menggunakan GROUP BY
+SELECT category,
+    COUNT(id) as 'Total product'
+FROM products 
+GROUP BY category;
+
+
+HAVING Clause
+kadang kita ingin melakukan filter terhadap data yang sudah kita grouping
+misal kita ingin menampilkan rata-rata harga per kategory, tapi yang harganya diatas 10000 
+jika menggunakan WHERE di SELECT hal ini tidak bisa dilakukan
+untuk memfilter hasil aggregate function, kita harus menggunakan HAVING clause
+
+contoh
+menggunakan HAVING Clause
+SELECT category,
+    COUNT(id) as total
+FROM products
+GROUP BY category
+HAVING total > 1; 

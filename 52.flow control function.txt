@@ -16,4 +16,12 @@ FROM products;
 menggunakan control flow IF
 SELECT id,
         price,
-        IF(pri)
+        IF(price <= 15000, "murah",
+                IF (price <= 20000, "mahal", "mahal banget")
+        ) AS "mahal?"
+FROM products;
+
+
+menggunakan control flow IFNULL
+SELECT id, name, IFNULL(description, 'kosong')
+FROM products;

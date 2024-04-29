@@ -1,0 +1,15 @@
+Index
+secara default MySQL akan menyimpan data di dalam disk seperti tabel biasanya
+hai ini menyebabkan, ketika kita mencari data, maka MySQL akan melakukan pencarian dari baris pertama
+sampai baris terakhir, yang artinya semakin banyak data, maka akan semakin lambat proses pencarian datanya.
+saat kita membuat index, MySQL akan menyimpan data dalam struktur data B-tree 
+yang akan mempermudah melakukan pencarian 
+index juga mempermudah melakukan penguruan menggunakan ORDER BY
+
+cara kerja index
+kita bisa membuat lebih dari satu index di tabel
+dan setiap membuat index, kiya bisa membuat index untuk beberapa kolom sekaligus
+misal membuat index (col1, col2, col3)
+artinya kita punya kemampuan untuk mencari lebih menggunakan index untuk kombinasi query di (col1), (col2, col2) dan (col1, col2, col3)
+
+efek samping membuat index

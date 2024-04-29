@@ -1,0 +1,12 @@
+Aggregate Function
+
+MySQL mendukung function-function untuk melakukan Aggregate
+misal kita ingin melihat harga paling mahal di tabel product,
+atau harga termurah atau rata rata harga product
+atau jumkah data di tabel dll
+
+contoh menggunakan Aggregate Function
+SELECT COUNT(id) AS 'Total Product' FROM products;
+SELECT AVG(price) AS 'Rata-rata' FROM products;
+SELECT MAX(price) AS 'Harga termahal' FROM products;
+SELECT MIN(price) AS 'Harga Termurah' FROM products;
