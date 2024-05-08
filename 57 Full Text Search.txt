@@ -1,0 +1,60 @@
+Full Text Search
+mencari sebuah kata bisa menggunakan LIKE operator
+operasi yang dilakukan LIKE operator dengan mencari seluruh data di tabel dari baris pertama sampai akhir sehungga membuat lambat
+jadi solusinya bisa menggunakan fitur Full Text Search yang disediakan oleh MYSQL
+
+Full Text Search memungkinkan mencari sebagian kata di kolom dengan tipe data string
+
+membuat table dengan Full Text Search
+
+CREATE TABLE products
+(
+	id VARCHAR(10) NOT NULL,
+	name VARCHAR(100) NOT NULL,
+	description TEXT,
+	price INT UNSIGNED NOT NULL,
+	quantity INT UNSIGNED NOT NULL DEFAULT 0,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    FULLTEXT product_search (name, description)         <<<<<<<<<<<====================
+) ENGINE = InnoDB
+
+
+jika table sudah dibuat bisa menambah atau menghapus Full-Text Search
+menambah
+ALTER TABLE products
+    ADD FULLTEXT product_search (name, description)
+
+
+menghapus
+ALTER TABLE products
+    DROP INDEX product_search
+
+
+Mode Full-Text Search
+beberapa mode untuk melakukan pencarian di Full-Text Search:
+1. Naturan Language yaitu mencari seperti bahasa naturan(per kata)
+2. Boolean yaitu mencari dengan kemampuan mengandung kata (+) atau tidak mengandung kata (-)
+3. Query Expansion yaitu mencari seperti naturan Language, namun melakukan dua kali pencarian,
+pencarian pertama menggunakan naturan Language, pencarian kedua melakukan pencarian dari kedekatan hasil pertama
+misal kita mencari kata "bakso", ternyata di dalam "bakso" ada kata "mie" maka kemungkinan
+query kedua akan mencari kata "mie" juga
+
+
+Mencari dengan Natural Language Mode
+SELECT * FROM products
+WHERE MATCH(name, description)
+AGAINST('ayam' IN NATURAL LANGUAGE MODE);
+
+
+mencari dengan boolean mode
+SELECT * FROM products
+WHERE MATCH(name, description)
+AGAINST('+mie -bakso' IN BOOLEAN MODE);
+
+
+mencari dengan Query Expansion Mode
+SELECT * FROM products
+WHERE MATCH(name, description)
+AGAINST('bakso' WITH QUERY EXPANSION);
+

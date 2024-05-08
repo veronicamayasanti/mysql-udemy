@@ -13,3 +13,23 @@ misal membuat index (col1, col2, col3)
 artinya kita punya kemampuan untuk mencari lebih menggunakan index untuk kombinasi query di (col1), (col2, col2) dan (col1, col2, col3)
 
 efek samping membuat index
+saat membuat index artinya MySQL akan melakukan proses update data di index setiap kali menambah, mengubah atau menghapus data di tabel
+artinya index membuat proses pencarian dan query lebih cepat, tapi memperlambat proses manipulasi data
+oleh karena itu kita harus bijak saat membuat index
+
+
+tidak perlu index
+saat membuat PRIMARY KEY dan UNIQUE constraint, tidak perlu menambahkan lagi index
+hal ini dikarenakan MySQL secara otomatis akan menambahkan index pada kolom PRIMARY KEY dan UNIQUE constraint
+
+contoh
+membuat tabel dengan index 
+CREATE TABLE sellers
+(
+    id          INT NOT NULL AUTO_INCREMENT,
+    name        VARCHAR(100),
+    email       VARCHAR(100),
+    PRIMARY KEY (id),
+    UNIQUE KEY      email_unique (email),
+    INDEX       name_index (name)
+) ENGINE = InnoDB;
