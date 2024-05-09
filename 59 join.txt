@@ -1,0 +1,17 @@
+Join
+MySQLmendukung query SELECT langsung ke beberapa tabel secara sekaligus
+kita perlu melakukan JOIN di SQL SELECT yang kita buat
+untuk melakukan JOIN, kita perlu menentukan tabel mana yang merupakan referensi ke tabel lain
+join cocok sekali dengan foreign key, walau di MySQL tidak ada aturan kalau JOIN harus ada foreign key
+join bisa dilakukan untuk lebih dari beberapa tabel
+namun semakin banyak JOIN, maka proses query akan semakin berat dan lambat
+idealnya melakukan JOIN tidak lebih dari 5 tabel
+
+
+Melakukan JOIN TABLE
+SELECT * FROM wishlist
+JOIN products ON (wishlist.id_product = products.id);
+
+SELECT wishlist.id, products.id, products.name, wishlist.description
+FROM wishlist
+	JOIN products ON (wishlist.id_product = products.id)

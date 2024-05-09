@@ -1,0 +1,52 @@
+foreign KEY
+saat membuat relasi tabel, biasanya kita akan membuat sebuah kolom sebagai referensi ke tabel lainnya
+misal saat membuat tabel penjualan, di dalam tabel penjualan akan menambah kolom id_produk sebagai referensi 
+ke tabel produk, yang berisi primary key di tabel produk
+kolom referensi ini di MySQL dinamakan foreign key 
+kita bisa menambah satu atau lebih foreign key ke dalam sebuah tabel
+membuat foreign key sama seprti membuat kolom biasanya, hanya saja perlu memberi tahu
+MySQL bahwa itu adalah foreign key ke tabel lain.
+
+
+Membuat Table dengan foreign key
+CREATE TABLE wishlist
+(
+    id              INT         NOT NULL AUTO_INCREMENT,
+    id_product      VARCHAR(10) NOT NULL,
+    description     TEXT,
+    PRIMARY KEY     (id),
+    CONSTRAINT      fk_wishlist_product
+        FOREIGN KEY (id_product) REFERENCES products (id)
+) ENGINE = InnoDB;
+
+
+menambah atau menghapus foreign key
+ALTER TABLE wishlist
+    DROP CONSTRAINT fk_wishlist_product
+
+
+ALTER TABLE wishlist
+    ADD CONSTRAINT fk_wishlist_product
+        FOREIGN KEY (id_product) REFERENCES products (id)
+
+
+keuntungan menggunakan foreign key
+foreign key memastikan bahwa data yang dimasukan ke kolom tersebut harus tersedia di tabel reference nya
+bisa menghapus data di tabel reference,
+MySQL akan mengecek apakah id nya digunakan di foreign key di tabel lain, jika digunakan
+maka secara otomatis MySQL akan menolak proses delete data di tabel reference tersebut
+
+
+Behavior FOREIGN KEY
+Behavior        ON delete               ON UPDATE
+restrict        ditolak                 ditolak
+cascade        data akan dihapus       data akan ikut diubah
+no action       data dibiarkan          data dibaiarkan
+set NULL        diubah jadi NULL        diubah jadi null 
+
+
+mengubah Behavior manghapus relasi
+ALTER TABLE wishlist
+    ADD CONSTRAINT fk_wishlist_product
+        FOREIGN KEY (id_product) REFERENCES products (id)
+            ON DELETE CASCADE ON UPDATE CASCADE;

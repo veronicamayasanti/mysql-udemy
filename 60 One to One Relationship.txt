@@ -1,0 +1,22 @@
+one to one relationship adalah relasi antar tabel yang paling serderhana
+tiap data di sebuah tabel hanya boleh berelasi ke maksimnal 1 data di tabel lainnya
+contohnya pada apliksi toko online yang terdapat wallet dan 1 customer cuma boleh punya 1 wallet
+
+membuat one to one relationship
+kita bisa membuat kolom foreign key, lalu set kolom tersebut menggunakan UNIQUE key
+hal ini dapat mencegah data di kolom tersebut agat tidak duplikat
+atau cara lain dengan membuat tabel yang primary key yang sama, sehingga tidak butuh lagi kolom untuk foreign KEY 
+
+
+MEMBUAT TABEL wallet
+
+CREATE TABLE wallet 
+(
+    id      INT NOT NULL AUTO_INCREMENT,
+    id_customer     INT NOT NULL,
+    balance     INT NOT NULL DEFAULT 0,
+    PRIMARY KEY     (id),
+    UNIQUE KEY      fk_id_customer_unique (id_customer),
+    CONSTRAINT      fk_wallet_customer
+        FOREIGN KEY (id_customer) REFERENCES customers (id)
+)ENGINE = InnoDB
