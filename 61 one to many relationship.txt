@@ -1,0 +1,15 @@
+one to many relationship
+
+adalah relasi antar tabel dimana satu data bisa digunakan lebih dari satu kali di tabel relasinya
+tidak ada batasan berapa banyak data yang digunakan
+contoh relasi antar tabel categories dan priducts, dimana satu category bisa digunakan oleh lebih dari satu product
+yang artinya relasinya one category to many products
+tidak perlu menggunakan UNIQUE KEY karena datanya bisa berkali kali ditambahkan di tabel relasinya'
+
+CREATE TABLE categories
+(
+    id      VARCHAR(10)         NOT NULL
+    name    VARCHAR(100)        NOT NULL
+    PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
