@@ -1,0 +1,11 @@
+jenis jenis JOIN di dalam MySQL
+INNER JOIN
+LEFT JOIN
+RIGHT JOIN
+CROSS JOIN
+
+INNER JOIN
+adalah mekanisme JOIN, dimana terdapat relasi antara tabel pertama dan tabel kedua
+jika ada data di tabel pertama yang tidak memilii relasi di tabel kedua ataupun sebaliknya,
+maka hasil INNER JOIN tidak di tampilkan
+ini adalah default JOIN DI MySQL

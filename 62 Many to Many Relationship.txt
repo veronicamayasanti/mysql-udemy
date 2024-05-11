@@ -1,0 +1,147 @@
+Many to Many Relationship
+
+Many to Many Relationship adalah relasi dimana ada relasi antara 2 tabel, dimana tabel pertama bisa 
+punya banyak relasi di tabel kedua, dan tabel kedua punya banyak relasi di tabel pertama.
+contoh relasi Many to Many : relasi antara produk dan penjualan:
+dimana setiap produk bisa dijual berkali kali, dan setiap penjualan bisa untuk lebih dari satu produk
+
+
+membuat tabel relasi adalah sebuah solusi untuk relasi many to many
+tabel ini bertugas sebagai jembatan untuk menggabungkan relasi many to many
+isi tabel ini akan adaa id dari tabel pertama dqan tabel kedua
+dalam kasus ini adalaha id_product dan id_order
+
+dengan demikian, kita bisa menambahkan beberapa data ke dalam tabel relasi ini
+sehingga berarti satu product bisa dijual beberapa kali di dalam tabel order 
+dan satu order bisa membeli lebih dari satu product
+
+membuat tabel order
+CREATE TABLE orders
+(
+    id      int         NOT NULL AUTO_INCREMENT,
+    total   INT        NOT NULL,
+    order_date  DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
+selanjutnya membuat tabel order detail
+
+CREATE TABLE orders_detail
+(
+    id_product      VARCHAR(10)         NOT NULL,
+    id_order   INT        NOT NULL,
+    price       INT     NOT NULL,
+    quantity    INT     NOT NULL,
+    PRIMARY KEY (id_product, id_order)
+) ENGINE = InnoDB;
+
+next
+membuat foreign KEY
+
+ALTER TABLE orders_detail
+ADD CONSTRAINT fk_orders_detail_product
+FOREIGN KEY (id_product) REFERENCES products(id);
+
+ALTER TABLE orders_detail
+ADD CONSTRAINT fk_orders_detail_orders
+FOREIGN KEY (id_order) REFERENCES orders(id);
+
+
+melihat data order, detail dan product nya
+SELECT *
+FROM orders 
+        JOIN orders_detail ON (orders_detail.id_order = orders.id)
+        JOIN products ON (products.id = orders_detail.id_product);
+
+==========================================================================================
+contoh study kasus dari gpt
+
+Studi kasus MySQL untuk hubungan many-to-many biasanya terjadi ketika Anda memiliki 
+dua entitas yang memiliki hubungan banyak-ke-banyak di antara mereka. Contoh klasiknya 
+adalah hubungan antara tabel siswa dan kelas di sekolah, di mana setiap siswa dapat mendaftar 
+ke banyak kelas dan setiap kelas dapat memiliki banyak siswa.
+
+Misalkan kita memiliki tiga tabel:
+
+1. Tabel `students` untuk menyimpan informasi tentang siswa:
+   ```sql
+   CREATE TABLE students (
+       student_id INT AUTO_INCREMENT PRIMARY KEY,
+       student_name VARCHAR(50) NOT NULL
+   );
+   ```
+
+2. Tabel `classes` untuk menyimpan informasi tentang kelas:
+   ```sql
+   CREATE TABLE classes (
+       class_id INT AUTO_INCREMENT PRIMARY KEY,
+       class_name VARCHAR(50) NOT NULL
+   );
+   ```
+
+3. Tabel perantara `student_classes` untuk menangani hubungan many-to-many antara siswa dan kelas:
+   ```sql
+   CREATE TABLE student_classes (
+       student_id INT,
+       class_id INT,
+       PRIMARY KEY (student_id, class_id),
+       FOREIGN KEY (student_id) REFERENCES students(student_id),
+       FOREIGN KEY (class_id) REFERENCES classes(class_id)
+   );
+   ```
+
+Dalam studi kasus ini:
+
+- Tabel `students` menyimpan data tentang siswa dengan kolom `student_id` sebagai kunci utama.
+- Tabel `classes` menyimpan data tentang kelas dengan kolom `class_id` sebagai kunci utama.
+- Tabel `student_classes` adalah tabel perantara yang menghubungkan `students` dan `classes` 
+dengan dua kolom: `student_id` yang merupakan kunci asing ke `students` dan `class_id` yang merupakan 
+kunci asing ke `classes`. Primary key dari tabel perantara adalah gabungan dari `student_id` dan `class_id`,
+ sehingga menghindari adanya kelas ganda untuk satu siswa.
+
+Contoh jawaban query:
+
+- **Menambahkan Siswa dan Kelas:**
+  ```sql
+  -- Menambahkan siswa
+  INSERT INTO students (student_name) VALUES ('John Doe');
+  INSERT INTO students (student_name) VALUES ('Jane Smith');
+
+  -- Menambahkan kelas
+  INSERT INTO classes (class_name) VALUES ('Math');
+  INSERT INTO classes (class_name) VALUES ('History');
+  ```
+
+- **Mendaftarkan Siswa ke Kelas:**
+  ```sql
+  -- Mendaftarkan John Doe ke kelas Math
+  INSERT INTO student_classes (student_id, class_id) VALUES (1, 1);
+
+  -- Mendaftarkan John Doe ke kelas History
+  INSERT INTO student_classes (student_id, class_id) VALUES (1, 2);
+
+  -- Mendaftarkan Jane Smith ke kelas History
+  INSERT INTO student_classes (student_id, class_id) VALUES (2, 2);
+  ```
+
+- **Mengambil Daftar Kelas Siswa:**
+  ```sql
+  -- Mengambil daftar kelas untuk John Doe
+  SELECT c.class_name
+  FROM student_classes sc
+  JOIN classes c ON sc.class_id = c.class_id
+  WHERE sc.student_id = 1;
+  ```
+
+- **Mengambil Daftar Siswa di Kelas Tertentu:**
+  ```sql
+  -- Mengambil daftar siswa di kelas History
+  SELECT s.student_name
+  FROM student_classes sc
+  JOIN students s ON sc.student_id = s.student_id
+  WHERE sc.class_id = 2;
+  ```
+
+Dengan struktur tabel ini, Anda dapat mengelola hubungan many-to-many 
+antara siswa dan kelas dengan menggunakan tabel perantara `student_classes` 
+untuk merekam pendaftaran siswa ke kelas-kelas tertentu.

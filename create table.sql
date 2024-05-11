@@ -1,6 +1,7 @@
-CREATE TABLE categories
+CREATE TABLE orders
 (
-    id      VARCHAR(10)         NOT NULL,
-    name    VARCHAR(100)        NOT NULL,`
+    id      int         NOT NULL AUTO_INCREMENT,
+    total   INT        NOT NULL,
+    order_date  DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB;
