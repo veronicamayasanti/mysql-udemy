@@ -9,3 +9,17 @@ adalah mekanisme JOIN, dimana terdapat relasi antara tabel pertama dan tabel ked
 jika ada data di tabel pertama yang tidak memilii relasi di tabel kedua ataupun sebaliknya,
 maka hasil INNER JOIN tidak di tampilkan
 ini adalah default JOIN DI MySQL
+jika kita menggunakan JOIN seperti yang sudah kita praktekan sebelumnya
+sebenarnya itu akan melakukan INNER JOIN
+
+
+LEFT JOIN
+adalah mekanisme join seperti INNER join, namun semua data di tabel pertama akan diambil juga
+jika ada yang tidak memiliki relasi di tabel kedua, maka hasilnya akan NULL.
+
+
+RIGHT JOIN
+adalah mekanisme join seperti inner join namun semua data di tabel kedua akan diambil juga
+jika ada yang tidak memiliki relasi di tabel pertama, maka hasilnya akan NULL
+
+

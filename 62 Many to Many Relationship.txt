@@ -53,7 +53,8 @@ FROM orders
         JOIN orders_detail ON (orders_detail.id_order = orders.id)
         JOIN products ON (products.id = orders_detail.id_product);
 
-==========================================================================================
+=============================================================================================
+
 contoh study kasus dari gpt
 
 Studi kasus MySQL untuk hubungan many-to-many biasanya terjadi ketika Anda memiliki 

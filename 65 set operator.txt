@@ -1,0 +1,65 @@
+Set Operator
+
+MySQL mendukung operator Set,adalah operasi antara hasil dari dua SELECT query.
+beberapa jenis operator set:
+UNION
+UNION ALL
+INTERSECT
+MINUS
+
+membuat tabel guest book
+CREATE TABLE guestbooks
+(
+    id      INT   NOT NULL AUTO_INCREMENT,
+    email   VARCHAR(100)    NOT NULL,
+    title   VARCHAR(200)    NOT NULL,
+    content TEXT,
+    PRIMARY KEY (id)
+)ENGINE = InnoDB;
+
+
+UNION adalah operasi menggabungkan dua buah SELECT query
+dimana jika terdapat data yang duplikat, data duplikatnya akan dihapus dari hasil query
+
+melakukan query UNION
+SELECT DISTINCT email FROM customers
+UNION
+SELECT DISTINCT email FROM guestbooks;
+
+UNION ALL adalah operasi sama dengan UNION, namun data duplikat tetap akan ditampilkan
+di hasil querynya
+
+melakukan query UNION ALL
+SELECT DISTINCT email FROM customers
+UNION ALL
+SELECT DISTINCT email FROM guestbooks;
+
+
+INTERSECT
+INTERSECT adalah operasi menggabungkan dua query namun yang diambil hanya data
+yang terdapat pada hasil query pertama dan query kedua
+data yang tidak hanya ada di salah satu query, akan dihapus di hasil operasi INTERSECT
+data yang muncul tidak dalam keadaan duplikat
+sayangnya MySQL tidak memiliki operasi INTERSECT
+namun dilakukan secara manula menggunakan JOIN atau SUBQUERY
+
+melakukan query INTERSECT
+SELECT DISTINCT email FROM customers
+WHERE email IN (SELECT DISTINCT email FROM guestbooks);
+
+SELECT DISTINCT customers.email FROM customers
+INNER JOIN  guestbooks ON (guestbooks.email = customers.email);
+
+
+
+MINUS
+MINUS adalah operasi dimana query pertama akan dihilangkan oleh query kedua
+artinya jika ada data di query pertama yang sama dengan data yang ada di query kedua,
+maka data tersebut akan dihapus dari hasil query MINUS
+di MySQL tidak ada operator MINUS
+dilakukan menggunakan JOIN
+
+melakukan query MINUS
+SELECT DISTINCT customers.email, guestbooks.email FROM customers
+LEFT JOIN guestbooks ON (guestbooks.email = customers.email)
+WHERE guestbooks.email IS NULL;

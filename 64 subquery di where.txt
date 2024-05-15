@@ -1,0 +1,24 @@
+Subquery di Where
+
+MySQL mendukung pencarian data menggunakan WHERE dari hasil SELECT query
+fitur imi dinamakan Subquery
+contohnya
+kita ingin mencari products yang harganya diatas harga rata rata,
+artinya kita akan melakukan SELECT dengan WHERE price > harga rata
+dimana harga rata rata perlu dihitung menggunakan query SELECT lainnya menggunakan aggregate function AVG
+
+melakukan subquery di where clause
+SELECT * FROM products
+WHERE price > (SELECT AVG(price) FROM products);
+
+
+subquery di FROM
+subquery juga bisa dilakukan di FROM clause
+misal ingin mencari data dari hasil query SELECT, itu bisa dilakukan di MySQL
+
+melakukan subquery di FROM clause
+SELECT MAX(price)
+    FROM (SELECT price
+        FROM categories
+            INNER JOIN products
+                ON (products.id_category = categories.id)) AS cp
