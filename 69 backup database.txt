@@ -1,0 +1,5 @@
+Backup database
+untuk melakukan backup database bisa menggunakan mysqldump
+
+melakukan backup database melalui terminal
+./bin/mysqldump belajar_mysql --user root --password --result-file=/Users/khannedy/Desktop/backup.sql

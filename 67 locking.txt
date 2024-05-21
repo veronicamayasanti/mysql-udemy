@@ -7,7 +7,7 @@ contohnya:
 ketika belanja di toko online, kita akan balapan membeli barang yang sama, jika data tidak terjaga,
 bisa jadi kita salah mengupdate stock keran pada saat yang bersamaan banyak yang melakukan perubahan stock barang.
 
-Locking Record
+>>>> Locking Record
 * saat melakukan proses TRANSACTION, lalu kita melakukan proses perubahan data,
 data yang kita ubah tersebut akan secara otomatis di LOCK 
 * hal ini membuat proses TRANSACTION sangat amann

@@ -1,0 +1,6 @@
+untuk melakukan restore database, bisa menggunakan aplikasi mysql client
+atau menggunakan perintah SOURCE di MySQl
+
+melakukan import database
+--user=root --password belajar_mysql_import
+< / Users/khannedy/Desktop/backup.sql 
