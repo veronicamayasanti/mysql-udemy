@@ -1,0 +1,10 @@
+section 4: Database Design: Notification
+1. create database belajar-mysql-notifcation
+2. create table user
+3. insert into user
+4. CREATE TABLE notification
+satu user punya banyak notification
+5. FOREIGN KEY table user id dan tabel notification user_id
+
+
+https://dbdiagram.io/d/66703a03a179551be6111465

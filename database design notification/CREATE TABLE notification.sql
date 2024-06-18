@@ -1,0 +1,8 @@
+CREATE TABLE notification (
+id INT NOT NULL ,
+title VARCHAR(225) NOT NULL,
+detail TEXT  NOT NULL,
+create_at TIMESTAMP NOT NULL,
+user_id VARCHAR(100),
+PRIMARY KEY (id)
+)ENGINE = INNODB;
