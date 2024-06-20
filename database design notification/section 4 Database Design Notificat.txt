@@ -5,6 +5,6 @@ section 4: Database Design: Notification
 4. CREATE TABLE notification
 satu user punya banyak notification
 5. FOREIGN KEY table user id dan tabel notification user_id
-
+6. create table category
 
 https://dbdiagram.io/d/66703a03a179551be6111465
