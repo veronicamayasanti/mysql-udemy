@@ -1,0 +1,28 @@
+membuat multi bahasa pada setiap kategori pada aplikasi
+
+table schema
+
+Table Categories {
+  id varchar(100) [primary key]
+  position int [not null]
+}
+
+Table CategoriesTranslations {
+  category_id varchar(100) [primary key]
+  language varchar(100) [primary key]
+  name varchar(100) [not null]
+  description text
+}
+
+Ref : "Categories"."id" < "CategoriesTranslations"."category_id"
+
+
+
+ALTER TABLE categories_translations
+ADD CONSTRAINT  fk_categories_translations
+FOREIGN KEY (category_id) REFERENCES categories (id);
+
+menampilkan semua data pada Categories dan categories_translations
+
+select * from categories
+join categories_translations ct on categories.id = ct.category_id

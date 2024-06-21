@@ -6,5 +6,40 @@ section 4: Database Design: Notification
 satu user punya banyak notification
 5. FOREIGN KEY table user id dan tabel notification user_id
 6. create table category
+7. fk_notification_category
+8. notif join cate
 
 https://dbdiagram.io/d/66703a03a179551be6111465
+
+Table User {
+  id varchar(100) [not null, primary key] 
+  name varchar(100) [not null]
+}
+
+Table Notification {
+  id integer [increment, primary key] 
+  title varchar(225)
+  detail text
+  create_at timestamp
+  user_id varchar(100) 
+  category_id varchar(100)
+
+}
+
+Table Category {
+  id varchar(100) [primary key]
+  name varchar(100)
+}
+ 
+ Table NotificationRead {
+  id int [increment, primary key]
+  is_read bool
+  notification_id int 
+  user_id varchar
+ }
+ 
+
+Ref: "User"."id" < "Notification"."user_id"
+  Ref: "Category"."id" < "Notification"."category_id"
+     Ref: "Notification"."id" < "NotificationRead"."notification_id"
+Ref: "User"."id" < "NotificationRead"."user_id"
